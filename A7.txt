@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+Assignment 7
+login.php
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <form action="" method="POST">
+        UserId:<input type="text" id="user_name" name="user_name"><br>
+        Password:<input type="password" id="password" name="password"><br>
+        <button type="submit" name="submit">Login</button>
+    </form>
+</body>
+</html>
+
+<?php
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "user";
+$conn=new mysqli($servername,$username,$password,$dbname);
+if(isset($_POST['submit']))
+{
+    $user=$_POST['user_name'];
+
+    $pass=$_POST['password'];
+
+
+    $query="SELECT * FROM USER WHERE USERNAME='$user' AND PASSWORD ='$pass'";
+
+    $data= mysqli_query($conn,$query);
+
+    $rows= mysqli_num_rows($data);
+    
+      if($rows==1)
+      {
+        $_SESSION['session_user']=$user;
+        echo "Login successfull";
+        header('location:welcome.php');
+      }
+
+      else{
+        echo "Login failed";
+      }
+}
+
+
+welcome.php
+
+<?php
+session_start();
+if($_SESSION['session_user']==TRUE)
+{
+    echo "Welcome ". $_SESSION['session_user'];
+}
+else {
+    header('location:login.php');
+     }
+?>
+
+<a href="logout.php">Logout</a>
+
+
+logout.php
+
+<?php
+
+session_start();
+session_unset();
+header('location:login.php')
+
+?>

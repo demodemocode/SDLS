@@ -1,0 +1,17 @@
+sudo chmod +x filename.run
+sudo ./filename.run
+
+
+//if apache not working
+sudo service apache2 status
+sudo service apache2 stop
+start appache
+
+
+//to copy
+
+sudo su
+enter password
+chmod -R 777 /opt/lampp/htdocs
+copy files in htdocs 
+go to browser localhost

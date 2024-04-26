@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+<script>
+    function data(event) {
+        event.preventDefault(); // Prevent form submission
+        var a = document.getElementById("n1").value;
+        var b = document.getElementById("n2").value;
+        var c = document.getElementById("n3").value;
+        var password = document.getElementById("n4").value;
+        var conf_password = document.getElementById("n5").value;
+
+        // Email validation regular expression
+        var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        if (a === "" || b === "" || c === "" || password === "" || conf_password === "") {
+            alert("Please fill all the details");
+            return false;
+        }
+        else if (b.length !== 10) {
+            alert("Phone number should be of 10 digits");
+            return false;
+        }
+        else if (!emailRegex.test(c)) {
+            alert("Please enter a valid email address");
+            return false;
+        }
+        else if (password !== conf_password) {
+            alert("Password Mismatch");
+            return false;
+        }
+        else {
+            // Display entered details
+            displayDetails(a, b, c);
+            return false; // Prevent form submission
+        }
+    }
+
+    function displayDetails(name, phone, email) {
+        var detailsContainer = document.getElementById("details-container");
+        detailsContainer.innerHTML = `
+            <h2>Entered Details:</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Email:</strong> ${email}</p>
+        `;
+    }
+</script>
+
+<h1>Registration Form</h1>
+<form onsubmit="return data(event)" action="success.html">
+    Name: <input type="text" id="n1"><br><br>
+    Phone: <input type="text" id="n2"><br><br>
+    Email: <input type="email" id="n3"><br><br>
+    Password: <input type="password" id="n4"><br><br>
+    Confirm Password: <input type="password" id="n5"><br><br>
+    <input type="submit" value="Submit"><br><br>
+    <h6>Already have an account? <a href="login_page.html">Login</a></h6>
+</form>
+
+<!-- Container to display entered details -->
+<div id="details-container"></div>
+
+</body>
+</html>

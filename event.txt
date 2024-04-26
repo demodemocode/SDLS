@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Handlers</title>
+    <script>
+        function changeText() {
+            document.getElementById("myElement").innerText = "Text Changed!";
+        }
+
+        function changeColor() {
+            document.getElementById("myElement").style.backgroundColor = "blue";
+        }
+
+        function revertColor() {
+            document.getElementById("myElement").style.backgroundColor= "white";
+        }
+
+        function showAlert() {
+            var inputValue = document.getElementById("inputField").value;
+            alert("You entered: " + inputValue);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            var inputValue = document.getElementById("inputField").value;
+            alert("Form submitted with value: " + inputValue);
+        }
+
+        function toggleText() {
+    const element = document.getElementById("toggleElement");
+    element.innerText = element.innerText === "Hello" ? "World" : "Hello";
+}
+
+    </script>
+</head>
+<body>
+
+<button onclick="changeText()">Change Text</button>
+<div id="myElement">Original Text</div>
+
+<div onmouseover="changeColor()" onmouseout="revertColor()">Hover over me</div>
+
+<input type="text" id="inputField">
+<button onclick="showAlert()">Show Alert</button>
+
+<form onsubmit="handleSubmit(event)">
+    <input type="text" id="inputField">
+    <button type="submit">Submit Form</button>
+
+    <button onclick="toggleText()">Toggle Text</button>
+<div id="toggleElement">Hello</div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+xml
+
+<shiporder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="shiporder.xsd">
+  <shipto>
+    <name>XYZ</name>
+    <address>London</address>
+    <pin>1122</pin>
+    <item>
+      <id>1</id>
+      <device>Mobile</device>
+      <company>Samsung</company>
+      <color>Black</color>
+    </item>
+  </shipto>
+
+  <shipto>
+    <name>ABC</name>
+    <address>Paris</address>
+    <pin>222</pin>
+    <item>
+      <id>2</id>
+      <device>TV</device>
+      <company>Samsung</company>
+      <color>Gray</color>
+    </item>
+  </shipto>
+
+</shiporder>
+
+
+xsd
+
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="shiporder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="shipto" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element name="address" type="xs:string"/>
+              <xs:element name="pin" type="xs:int"/>
+              <xs:element name="item" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" type="xs:int"/>
+                    <xs:element name="device" type="xs:string"/>
+                    <xs:element name="company" type="xs:string"/>
+                    <xs:element name="color" type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

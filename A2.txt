@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+        function data() {
+            var a = document.getElementById("n1").value;
+            var b = document.getElementById("n2").value;
+            var c = document.getElementById("n3").value;
+            var password = document.getElementById("n4").value;
+            var conf_password = document.getElementById("n5").value;
+
+            // Email validation regular expression
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (a === "" || b === "" || c === "" || password === "" || conf_password === "") {
+                console.error("Please fill all the details");
+                return false;
+            }
+            else if (b.length !== 10) {
+                alert("Phone number should be of 10 digits");
+                return false;
+            }
+            else if (!emailRegex.test(c)) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+            else if (password !== conf_password) {
+                alert("Password Mismatch");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+
+    <h1>Registration Form</h1>
+    <form onsubmit="return data()" action="success.html">
+        Name: <input type="text" id="n1"><br><br>
+        Phone: <input type="text" id="n2"><br><br>
+        Email: <input type="email" id="n3"><br><br>
+        Password: <input type="password" id="n4"><br><br>
+        Confirm Password: <input type="password" id="n5"><br><br>
+        <input type="submit" value="Submit"><br><br>
+    </form>
+</body>
+</html>

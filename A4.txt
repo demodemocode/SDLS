@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333366;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333366;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 20px;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Employee Search</h1>
+
+    <?php
+    // Create an indexed array of employee names
+    $employee_names = [
+        "John Doe",
+        "Jane Doe",
+        "Alice Smith",
+        "Bob Johnson",
+        "Charlie Brown",
+        "David Williams",
+        "Emma Wilson",
+        "Frank Davis",
+        "Grace Lee",
+        "Henry Clark",
+        "Isabel Harris",
+        "Jack White",
+        "Karen Hall",
+        "Larry Taylor",
+        "Megan Anderson",
+        "Nancy Miller",
+        "Oliver Martinez",
+        "Pamela Wilson",
+        "Quincy Adams",
+        "Rachel Green"
+    ];
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $search_name = $_POST["search_name"];
+        $found = false;
+
+        foreach ($employee_names as $name) {
+            if (strtolower($name) == strtolower($search_name)) 
+            {
+                $found = true;
+                break;
+            }
+        }
+
+        if ($found) {
+            echo "<p>$search_name is found in the employee list.</p>";
+        } else {
+            echo "<p>$search_name is not found in the employee list.</p>";
+        }
+    }
+    ?>
+
+    <form method="post" action="">
+        Search Employee Name:<input type="text" id="search_name" name="search_name">
+        <input type="submit" value="Search">
+    </form>
+
+</body>
+</html>

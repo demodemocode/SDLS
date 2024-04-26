@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Examples</title>
+</head>
+<body>
+
+<h1>Hello, JavaScript!</h1>
+
+<!-- Alert -->
+<button onclick="showAlert()">Show Alert</button>
+
+<!-- Average number of weeks in human lifetime -->
+<button onclick="calculateWeeks()">Calculate Weeks in Lifetime</button>
+
+<!-- Time of the day -->
+<button onclick="tellTimeOfDay()">Tell Time of Day</button>
+
+<!-- User input to greet -->
+<input type="text" id="userName" placeholder="Enter your name">
+<button onclick="greetUser()">Greet User</button>
+
+<script>
+    // Alert
+    function showAlert() {
+        alert("Hello from JavaScript!");
+    }
+
+    // Calculate average number of weeks in human lifetime
+    function calculateWeeks() {
+        const averageLifeSpan = 79; // average lifespan in years
+        const weeksInYear = 52;
+        const averageWeeksInLife = averageLifeSpan * weeksInYear;
+
+        alert(`Average number of weeks in a human lifetime is approximately ${averageWeeksInLife} weeks.`);
+    }
+
+    // Program that tells the time of the day
+    function tellTimeOfDay() {
+        const date = new Date();
+        const hour = date.getHours();
+
+        let timeOfDay;
+
+        if (hour < 12) {
+            timeOfDay = "morning";
+        } else if (hour < 18) {
+            timeOfDay = "afternoon";
+        } else {
+            timeOfDay = "night";
+        }
+
+        alert(`It's ${timeOfDay} right now.`);
+    }
+
+    // Greet the user with their name
+    function greetUser() {
+        const userName = document.getElementById('userName').value;
+        alert(`Hello, ${userName}!`);
+    }
+</script>
+
+</body>
+</html>
